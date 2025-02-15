@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://chnd8keo7amdx"]
+
+[ext_resource type="PackedScene" uid="uid://ddllnjmdqqyyf" path="res://addons/godot-xr-tools/objects/pickable_cat.tscn" id="1_4wo87"]
+[ext_resource type="PackedScene" uid="uid://b4wekqp5058vf" path="res://models/catapult.blend" id="2_xqbhs"]
+[ext_resource type="Script" uid="uid://bmnknsqiejvk0" path="res://elastic.gd" id="3_xqbhs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g08k6"]
+size = Vector3(0.167358, 0.186584, 0.619141)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fcn6n"]
+radius = 0.130388
+
+[sub_resource type="BoxMesh" id="BoxMesh_xqbhs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqbhs"]
+albedo_color = Color(0.301961, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fcn6n"]
+
+[node name="PickableObject" instance=ExtResource("1_4wo87")]
+
+[node name="catapult2" parent="." index="0" instance=ExtResource("2_xqbhs")]
+
+[node name="CollisionShape3D2" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00421143, 0.0431519, 0.190918)
+shape = SubResource("BoxShape3D_g08k6")
+
+[node name="elastic" type="Area3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.394383)
+script = ExtResource("3_xqbhs")
+
+[node name="center_collision" type="CollisionShape3D" parent="elastic" index="0"]
+shape = SubResource("SphereShape3D_fcn6n")
+
+[node name="left" type="Marker3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.138842, 0, -0.407421)
+
+[node name="left_elastic" type="Node3D" parent="left" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138842, 0, 0.407421)
+visible = false
+
+[node name="left_elastic" type="MeshInstance3D" parent="left/left_elastic" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.138842, 0, -0.407421)
+mesh = SubResource("BoxMesh_xqbhs")
+skeleton = NodePath("../..")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="left/left_elastic" index="1"]
+radius = 0.05
+material = SubResource("StandardMaterial3D_xqbhs")
+
+[node name="right" type="Marker3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.136566, 0, -0.407421)
+visible = false
+
+[node name="right_elastic" type="Node3D" parent="right" index="0"]
+
+[node name="right_elastic" type="MeshInstance3D" parent="right/right_elastic" index="0"]
+mesh = SubResource("BoxMesh_fcn6n")
+skeleton = NodePath("../..")
+
+[connection signal="area_entered" from="elastic" to="elastic" method="_on_area_entered"]
+
+[editable path="catapult2"]

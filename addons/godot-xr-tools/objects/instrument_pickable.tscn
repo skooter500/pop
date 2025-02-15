@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddjdf6hvljxti"]
+
+[ext_resource type="PackedScene" uid="uid://ddllnjmdqqyyf" path="res://addons/godot-xr-tools/objects/pickable_cat.tscn" id="1_7jlan"]
+
+[node name="PickableObject" instance=ExtResource("1_7jlan")]

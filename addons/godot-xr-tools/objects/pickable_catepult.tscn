@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddp1pnmfv4m1v"]
+
+[ext_resource type="PackedScene" uid="uid://ddllnjmdqqyyf" path="res://addons/godot-xr-tools/objects/pickable_cat.tscn" id="1_cr8ke"]
+[ext_resource type="PackedScene" uid="uid://b4wekqp5058vf" path="res://models/catapult.blend" id="2_5brjq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g08k6"]
+size = Vector3(0.167358, 0.186584, 0.619141)
+
+[node name="PickableObject" instance=ExtResource("1_cr8ke")]
+
+[node name="catapult2" parent="." index="0" instance=ExtResource("2_5brjq")]
+
+[node name="CollisionShape3D2" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00421143, 0.0431519, 0.190918)
+shape = SubResource("BoxShape3D_g08k6")

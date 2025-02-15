@@ -15,6 +15,16 @@ run/main_scene="uid://c8emmou0hkuy4"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+XrSimulator="*res://addons/xr-simulator/XRSimulator.tscn"
+XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
+XRToolsRumbleManager="*res://addons/godot-xr-tools/rumble/rumble_manager.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdfxr/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg")
+
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
