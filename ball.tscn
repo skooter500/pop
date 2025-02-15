@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://3e403sj57fm7"]
+
+[ext_resource type="Material" uid="uid://cfbemmsaypw07" path="res://instrument_material.tres" id="1_x8fbi"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cbx31"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_41u45"]
+radius = 0.07
+
+[node name="ball" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_cbx31")
+surface_material_override/0 = ExtResource("1_x8fbi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_41u45")
