@@ -39,7 +39,8 @@ func _process(delta):
 		held = true
 	else:
 		if held:
-			
+			$"../Stretch".play()
+
 			var to_cent = right_hand.global_position - center.global_position
 			var dist = to_cent.length()		
 			

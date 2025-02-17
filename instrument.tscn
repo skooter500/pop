@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://cngd8x673qx8e"]
+[gd_scene load_steps=15 format=4 uid="uid://cngd8x673qx8e"]
 
+[ext_resource type="Script" uid="uid://cxemsxpt87ta1" path="res://instrument.gd" id="1_7rj81"]
 [ext_resource type="PackedScene" uid="uid://58xe4g4mgb6v" path="res://models/Button.blend" id="1_m782a"]
+[ext_resource type="AudioStream" uid="uid://b3250xjhbnf7w" path="res://models/instrumentTone.wav" id="2_87rgg"]
 [ext_resource type="Material" uid="uid://cfbemmsaypw07" path="res://instrument_material.tres" id="2_pa7pg"]
 [ext_resource type="PackedScene" uid="uid://u5erpufybxax" path="res://slider.blend" id="3_7rj81"]
 [ext_resource type="PackedScene" uid="uid://cv6rcdvt0s0tt" path="res://models/crank.blend" id="4_87rgg"]
@@ -74,8 +76,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_utami")
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pth3f"]
+radius = 1.04931
+height = 2.14048
+
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114479, 0.896548, 0.0368828)
+script = ExtResource("1_7rj81")
+
+[node name="InstrumentTone" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_87rgg")
 
 [node name="Button3" parent="." instance=ExtResource("1_m782a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0976133, -1.21365, -0.230888)
@@ -121,6 +131,14 @@ surface_material_override/0 = ExtResource("2_pa7pg")
 
 [node name="Button2" parent="." instance=ExtResource("1_m782a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.322193, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.514099, 0)
+shape = SubResource("CapsuleShape3D_pth3f")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 
 [editable path="Button3"]
 [editable path="slider"]
