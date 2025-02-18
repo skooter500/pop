@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bmnknsqiejvk0" path="res://elastic.gd" id="3_xqbhs"]
 [ext_resource type="PackedScene" uid="uid://3e403sj57fm7" path="res://ball.tscn" id="5_6a3l7"]
 [ext_resource type="PackedScene" uid="uid://bk2p8yi205u7g" path="res://imaginary_ball.tscn" id="6_t5eko"]
-[ext_resource type="AudioStream" uid="uid://contgkea5nwa1" path="res://models/stretch.wav" id="7_ry7la"]
+[ext_resource type="AudioStream" uid="uid://bjvhqi13d730a" path="res://models/stretch.wav" id="7_ry7la"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g08k6"]
 size = Vector3(0.167358, 0.186584, 0.619141)

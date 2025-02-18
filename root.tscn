@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://chnd8keo7amdx" path="res://pickable_catepult.tscn" id="2_vyht1"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_jnlp7"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_l8v81"]
-[ext_resource type="AudioStream" uid="uid://dn2rmpmn2ouyq" path="res://models/rhtym.wav" id="4_huihk"]
+[ext_resource type="AudioStream" uid="uid://ecd8v2pu330v" path="res://models/rhtym.wav" id="4_huihk"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_l8v81"]
 [ext_resource type="PackedScene" uid="uid://uqh3s4twev0v" path="res://alien.tscn" id="9_huihk"]
 [ext_resource type="Script" uid="uid://rln53nbjrlys" path="res://alien_spawner.gd" id="10_tw3kd"]
