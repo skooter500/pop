@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://chnd8keo7amdx"]
+[gd_scene load_steps=14 format=3 uid="uid://chnd8keo7amdx"]
 
 [ext_resource type="PackedScene" uid="uid://ddllnjmdqqyyf" path="res://addons/godot-xr-tools/objects/pickable_cat.tscn" id="1_4wo87"]
 [ext_resource type="PackedScene" uid="uid://b4wekqp5058vf" path="res://models/catapult.blend" id="2_xqbhs"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" uid="uid://bmnknsqiejvk0" path="res://elastic.gd" id="3_xqbhs"]
 [ext_resource type="PackedScene" uid="uid://3e403sj57fm7" path="res://ball.tscn" id="5_6a3l7"]
 [ext_resource type="PackedScene" uid="uid://bk2p8yi205u7g" path="res://imaginary_ball.tscn" id="6_t5eko"]
-[ext_resource type="AudioStream" uid="uid://bjvhqi13d730a" path="res://models/stretch.wav" id="7_ry7la"]
+[ext_resource type="AudioStream" uid="uid://dsx4bm1cgv1e4" path="res://sounds/rubber-stretch-rip-1-6809.mp3" id="7_ry7la"]
+[ext_resource type="AudioStream" uid="uid://dpghc0x4dkw53" path="res://sounds/knife-throw-2-88028.mp3" id="8_ireic"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g08k6"]
 size = Vector3(0.167358, 0.186584, 0.619141)
@@ -17,6 +18,9 @@ radius = 0.130388
 [sub_resource type="BoxMesh" id="BoxMesh_xqbhs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fcn6n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ireic"]
+size = Vector3(0.3, 0.01, 0.01)
 
 [node name="PickableObject" instance=ExtResource("1_4wo87")]
 
@@ -61,6 +65,13 @@ skeleton = NodePath("../..")
 
 [node name="Stretch" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("7_ry7la")
+
+[node name="throw" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("8_ireic")
+
+[node name="unstretched" type="MeshInstance3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, -0.980785, 0.19509, 0, -0.19509, -0.980785, 0, 0.0484153, -0.407456)
+mesh = SubResource("BoxMesh_ireic")
 
 [connection signal="area_entered" from="elastic" to="elastic" method="_on_area_entered"]
 

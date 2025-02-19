@@ -6,6 +6,8 @@ var held = false
 
 var p = 0
 
+var can_stretch = false
+
 func input_float_changed(name, value):
 	print(name)
 	p = value
@@ -15,7 +17,8 @@ func _ready():
 	right_hand = $"../../XROrigin3D/right"
 	right_hand.input_float_changed.connect(input_float_changed)
 	imaginary_ball = ball_scene.instantiate()
-	get_tree().get_root().add_child(imaginary_ball)
+	imaginary_ball.imaginary = true
+	get_tree().get_root().add_child.call_deferred(imaginary_ball)
 	imaginary_ball.visible = true
 	imaginary_ball.mass = 0
 
@@ -35,12 +38,11 @@ func _ready():
 var imaginary_ball
 
 func _process(delta):
-	if p > 0:
+	print(can_stretch)
+	if p > 0 and can_stretch:
 		held = true
 	else:
 		if held:
-			$"../Stretch".play()
-
 			var to_cent = right_hand.global_position - center.global_position
 			var dist = to_cent.length()		
 			
@@ -50,8 +52,13 @@ func _process(delta):
 			dir = dir.normalized()
 			ball.apply_force(dir * power * dist)
 			get_tree().get_root().add_child(ball)
+			$"../Stretch".stop()
+			$"../throw".play()
 		held = false
 	if held:
+		$"../unstretched".visible = false
+		if ! $"../Stretch".is_playing():
+			$"../Stretch".play()
 		## Calculate left side of catepult
 		var to_cent = right_hand.global_position - left.global_position
 		
@@ -78,6 +85,11 @@ func _process(delta):
 		left_elastic.visible = false
 		right_elastic.visible = false
 		imaginary_ball.visible = false
-		
+		$"../unstretched".visible = true
 	
 	# print(p)
+
+
+func _on_area_entered(area: Area3D) -> void:
+	can_stretch = true
+	pass # Replace with function body.

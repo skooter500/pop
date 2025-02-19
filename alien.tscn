@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://uqh3s4twev0v"]
+[gd_scene load_steps=9 format=4 uid="uid://uqh3s4twev0v"]
 
 [ext_resource type="Script" uid="uid://b2vd6xmbvdk55" path="res://alien.gd" id="1_0cgv7"]
 [ext_resource type="AudioStream" uid="uid://cxvpo2egevp8l" path="res://sounds/jump.wav" id="2_uphwn"]
-[ext_resource type="PackedScene" uid="uid://cd4ucm3khtlf5" path="res://explosion.tscn" id="2_wk2vo"]
-[ext_resource type="AudioStream" uid="uid://gnbcedwespe3" path="res://models/Explosion.wav" id="3_wk2vo"]
+[ext_resource type="AudioStream" uid="uid://biq3k2p3qbvjk" path="res://sounds/Powerup18.wav" id="2_wk2vo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udboa"]
 
@@ -48,16 +47,15 @@ height = 0.720549
 
 [node name="alien" type="Node3D"]
 script = ExtResource("1_0cgv7")
-explosion_scene = ExtResource("2_wk2vo")
+
+[node name="blip" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wk2vo")
 
 [node name="Synth" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_uphwn")
 
-[node name="Explosion" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_wk2vo")
-
 [node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.410758, 0, 0, 0, 0.410758, 0, 0, 0, 0.410758, -0.0525039, -0.193555, 0.0633722)
+transform = Transform3D(-0.410758, 0, -3.59096e-08, 0, 0.410758, 0, 3.59096e-08, 0, -0.410758, 0.0208158, -0.193555, -0.0398185)
 mesh = SubResource("ArrayMesh_jr602")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_l8v81")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://3e403sj57fm7"]
+[gd_scene load_steps=5 format=3 uid="uid://3e403sj57fm7"]
 
+[ext_resource type="Script" uid="uid://bwo117ni3j0ri" path="res://ball.gd" id="1_41u45"]
 [ext_resource type="Material" uid="uid://cfbemmsaypw07" path="res://instrument_material.tres" id="1_x8fbi"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_cbx31"]
@@ -10,6 +11,7 @@ height = 0.1
 radius = 0.07
 
 [node name="ball" type="RigidBody3D"]
+script = ExtResource("1_41u45")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_cbx31")
