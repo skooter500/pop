@@ -44,6 +44,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	exp.position = position
 	get_parent().add_child(exp)
 	self.queue_free()
-	body.queue_free()
+	if body.is_in_group("ball"):
+		body.queue_free()
+	
 	get_parent().alien_count = get_parent().alien_count + 1
 	pass # Replace with function body.

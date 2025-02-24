@@ -29,6 +29,10 @@ enabled=PackedStringArray("res://addons/gdfxr/plugin.cfg", "res://addons/godot-x
 import/blender/enabled.android=true
 import/blender/enabled.web=true
 
+[global_group]
+
+ball=""
+
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
