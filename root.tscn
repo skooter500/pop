@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8emmou0hkuy4"]
+[gd_scene load_steps=17 format=3 uid="uid://c8emmou0hkuy4"]
 
 [ext_resource type="Script" uid="uid://ba007mfh858nm" path="res://pop_game.gd" id="1_huihk"]
+[ext_resource type="AudioStream" uid="uid://v5qy4dnxvlql" path="res://sounds/spawn.wav" id="2_gd4vy"]
 [ext_resource type="PackedScene" uid="uid://chnd8keo7amdx" path="res://pickable_catepult.tscn" id="2_vyht1"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_jnlp7"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_l8v81"]
@@ -32,6 +33,9 @@ radius = 0.1
 
 [node name="pop_game" type="Node3D"]
 script = ExtResource("1_huihk")
+
+[node name="Spawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gd4vy")
 
 [node name="catepult" parent="." instance=ExtResource("2_vyht1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99323, 2.03823, 2.85855)

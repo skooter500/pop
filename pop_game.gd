@@ -50,6 +50,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func next_level():
+	$Spawn.play()
 	ufo_spawner.radius = 1
 	ufo_spawner.count = level + 1
 	ufo_spawner.rate  = level + 1
