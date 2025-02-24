@@ -9,7 +9,6 @@ var p = 0
 var can_stretch = false
 
 func input_float_changed(name, value):
-	print(name)
 	p = value
 	pass
 
@@ -38,7 +37,6 @@ func _ready():
 var imaginary_ball
 
 func _process(delta):
-	print(can_stretch)
 	if p > 0 and can_stretch:
 		held = true
 	else:
@@ -54,6 +52,7 @@ func _process(delta):
 			get_tree().get_root().add_child(ball)
 			$"../Stretch".stop()
 			$"../throw".play()
+			can_stretch = false
 		held = false
 	if held:
 		$"../unstretched".visible = false
@@ -92,4 +91,9 @@ func _process(delta):
 
 func _on_area_entered(area: Area3D) -> void:
 	can_stretch = true
+	pass # Replace with function body.
+
+
+func _on_area_exited(area: Area3D) -> void:
+	
 	pass # Replace with function body.
