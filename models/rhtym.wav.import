@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://62p8wp1wfp5n"
+uid="uid://ecd8v2pu330v"
 path="res://.godot/imported/rhtym.wav-dafa81e73549b0d9a79fd0d1adbf61cb.sample"
 
 [deps]
@@ -21,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

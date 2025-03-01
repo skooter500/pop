@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 [gd_scene load_steps=2 format=3 uid="uid://c65al424h7l72"]
+=======
+<<<<<<< HEAD
+[gd_scene load_steps=2 format=3 uid="uid://dfubmd6j3pgue"]
+=======
+[gd_scene load_steps=2 format=3 uid="uid://c65al424h7l72"]
+>>>>>>> 1dd31a5 (models)
+>>>>>>> bbbbb
 
 [ext_resource type="Script" uid="uid://b4lekcb7w5djs" path="res://addons/gdfxr/editor/VersionButton.gd" id="1"]
 

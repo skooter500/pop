@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://da46reic47wb5"
+uid="uid://bkhpcsgmvlpdv"
 path="res://.godot/imported/instrumentTone.wav-0045d2e6cf27e045b207055b2451d892.sample"
 
 [deps]
@@ -21,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

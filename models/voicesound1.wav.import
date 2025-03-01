@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dq3bk1xftwcvb"
+uid="uid://bydpxhiacs087"
 path="res://.godot/imported/voicesound1.wav-85811390515969391187cf8f7569df6c.sample"
 
 [deps]
@@ -21,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

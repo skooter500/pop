@@ -1,12 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8emmou0hkuy4"]
+[gd_scene load_steps=17 format=3 uid="uid://c8emmou0hkuy4"]
 
-[ext_resource type="Script" uid="uid://b1hl2xt8pv02w" path="res://root.gd" id="1_pq8q7"]
-[ext_resource type="PackedScene" uid="uid://cngd8x673qx8e" path="res://instrument.tscn" id="2_bf3um"]
+[ext_resource type="Script" uid="uid://ba007mfh858nm" path="res://pop_game.gd" id="1_huihk"]
+[ext_resource type="AudioStream" uid="uid://v5qy4dnxvlql" path="res://sounds/spawn.wav" id="2_gd4vy"]
 [ext_resource type="PackedScene" uid="uid://chnd8keo7amdx" path="res://pickable_catepult.tscn" id="2_vyht1"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_jnlp7"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_l8v81"]
-[ext_resource type="PackedScene" uid="uid://bqrks5u0ne68c" path="res://models/alien.blend" id="4_gd4vy"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_l8v81"]
+[ext_resource type="AudioStream" uid="uid://biv25b73wi16u" path="res://sounds/explosion.wav" id="6_huihk"]
+[ext_resource type="Material" uid="uid://bfn044xkgeqf1" path="res://table.tres" id="8_tw3kd"]
+[ext_resource type="PackedScene" uid="uid://uqh3s4twev0v" path="res://alien.tscn" id="9_huihk"]
+[ext_resource type="PackedScene" uid="uid://cd4ucm3khtlf5" path="res://explosion.tscn" id="10_gd4vy"]
+[ext_resource type="Script" uid="uid://rln53nbjrlys" path="res://alien_spawner.gd" id="10_tw3kd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pq8q7"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -22,27 +26,29 @@ ambient_light_color = Color(0.577008, 0.577008, 0.577008, 1)
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="root" type="Node3D"]
-script = ExtResource("1_pq8q7")
+[sub_resource type="SphereShape3D" id="SphereShape3D_tw3kd"]
+radius = 0.1
 
-[node name="Node3D" parent="." instance=ExtResource("2_bf3um")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114479, 2.49035, -1.32585)
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_vyht1"]
+
+[node name="pop_game" type="Node3D"]
+script = ExtResource("1_huihk")
+
+[node name="Spawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gd4vy")
 
 [node name="catepult" parent="." instance=ExtResource("2_vyht1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24965, 1.0273, 2.37432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99323, 2.03823, 2.85855)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(0.687595, 0.628817, -0.363047, -9.8385e-09, 0.5, 0.866025, 0.726095, -0.595474, 0.343797, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vvh5c")
 
-[node name="alien" parent="." instance=ExtResource("4_gd4vy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31532, 0.222774, -2.58842)
-
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.65076)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1.65076)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.742418, 0)
@@ -61,31 +67,60 @@ tracker = &"right_hand"
 
 [node name="RightHand" parent="XROrigin3D/right" instance=ExtResource("4_l8v81")]
 
+[node name="Area3D" type="Area3D" parent="XROrigin3D/right"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/right/Area3D"]
+shape = SubResource("SphereShape3D_tw3kd")
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_huihk")
+
 [node name="table" type="CSGBox3D" parent="."]
-transform = Transform3D(0.942057, 0, -0.335452, 0, 1, 0, 0.335452, 0, 0.942057, 1.47664, 0.58268, 2.48978)
+transform = Transform3D(0.942057, 0, -0.335452, 0, 1, 0, 0.335452, 0, 0.942057, 2.46971, 0.58268, 2.9351)
 use_collision = true
 size = Vector3(2, 0.1, 1.14661)
+material = ExtResource("8_tw3kd")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.858268, -0.3, 0.366)
 radius = 0.1
 height = 0.5
 smooth_faces = false
+material = ExtResource("8_tw3kd")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.853159, -0.3, -0.341579)
+material_override = ExtResource("8_tw3kd")
 radius = 0.1
 height = 0.5
 smooth_faces = false
+material = ExtResource("8_tw3kd")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.817096, -0.3, 0.366)
 radius = 0.1
 height = 0.5
 smooth_faces = false
+material = ExtResource("8_tw3kd")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.822205, -0.3, -0.341579)
 radius = 0.1
 height = 0.5
 smooth_faces = false
+material = ExtResource("8_tw3kd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_vyht1")
+
+[node name="alien_spawner" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49274, 2.38833, 0.539097)
+script = ExtResource("10_tw3kd")
+ufo_scene = ExtResource("9_huihk")
+radius = 2.0
+count = 5
+rate = 5
+
+[node name="explosion" parent="." instance=ExtResource("10_gd4vy")]

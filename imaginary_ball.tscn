@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk2p8yi205u7g"]
+
+[ext_resource type="Material" uid="uid://cfbemmsaypw07" path="res://instrument_material.tres" id="1_5gk6c"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cbx31"]
+radius = 0.05
+height = 0.1
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_cbx31")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_5gk6c")

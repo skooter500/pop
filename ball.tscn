@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://3e403sj57fm7"]
+
+[ext_resource type="Script" uid="uid://bwo117ni3j0ri" path="res://ball.gd" id="1_41u45"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cbx31"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8fbi"]
+transparency = 1
+albedo_color = Color(1, 0.9, 0, 1)
+metallic = 0.87
+roughness = 0.46
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_41u45"]
+radius = 0.07
+
+[node name="ball" type="RigidBody3D" groups=["ball"]]
+script = ExtResource("1_41u45")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_cbx31")
+surface_material_override/0 = SubResource("StandardMaterial3D_x8fbi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_41u45")

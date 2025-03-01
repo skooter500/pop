@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dgrfbxdqv0n6h"
+uid="uid://bjvhqi13d730a"
 path="res://.godot/imported/stretch.wav-2fe5879723d4a70bcf2671e2c9eab4c9.sample"
 
 [deps]
@@ -21,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2
