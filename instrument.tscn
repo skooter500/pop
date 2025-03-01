@@ -1,12 +1,20 @@
+<<<<<<< HEAD
 [gd_scene load_steps=15 format=4 uid="uid://cngd8x673qx8e"]
 
 [ext_resource type="Script" uid="uid://cxemsxpt87ta1" path="res://instrument.gd" id="1_7rj81"]
 [ext_resource type="PackedScene" uid="uid://58xe4g4mgb6v" path="res://models/Button.blend" id="1_m782a"]
 [ext_resource type="AudioStream" uid="uid://bkhpcsgmvlpdv" path="res://models/instrumentTone.wav" id="2_87rgg"]
+=======
+[gd_scene load_steps=13 format=4 uid="uid://cngd8x673qx8e"]
+
+>>>>>>> 1dd31a5 (models)
 [ext_resource type="Material" uid="uid://cfbemmsaypw07" path="res://instrument_material.tres" id="2_pa7pg"]
-[ext_resource type="PackedScene" uid="uid://u5erpufybxax" path="res://slider.blend" id="3_7rj81"]
-[ext_resource type="PackedScene" uid="uid://cv6rcdvt0s0tt" path="res://models/crank.blend" id="4_87rgg"]
-[ext_resource type="PackedScene" uid="uid://ppr4seflxeyl" path="res://models/instrument.blend" id="5_pth3f"]
+
+[sub_resource type="Resource" id="Resource_81u6h"]
+metadata/__load_path__ = "res://models/Button.blend"
+
+[sub_resource type="Resource" id="Resource_d3470"]
+metadata/__load_path__ = "res://slider.blend"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vr4rd"]
 
@@ -42,6 +50,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lv3sa")
 
+[sub_resource type="Resource" id="Resource_n6dkq"]
+metadata/__load_path__ = "res://models/crank.blend"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhl18"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_utami"]
@@ -76,9 +87,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_utami")
 
+<<<<<<< HEAD
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pth3f"]
 radius = 1.04931
 height = 2.14048
+=======
+[sub_resource type="Resource" id="Resource_x0f17"]
+metadata/__load_path__ = "res://models/instrument.blend"
+
+[sub_resource type="Resource" id="Resource_m782a"]
+metadata/__load_path__ = "res://models/Button.blend"
+>>>>>>> 1dd31a5 (models)
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114479, 0.896548, 0.0368828)
@@ -87,13 +106,13 @@ script = ExtResource("1_7rj81")
 [node name="InstrumentTone" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_87rgg")
 
-[node name="Button3" parent="." instance=ExtResource("1_m782a")]
+[node name="Button3" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0976133, -1.21365, -0.230888)
 
 [node name="Button" parent="Button3" index="0"]
 surface_material_override/0 = ExtResource("2_pa7pg")
 
-[node name="slider" parent="." instance=ExtResource("3_7rj81")]
+[node name="slider" parent="."]
 
 [node name="sliderbody" parent="slider" index="0"]
 transform = Transform3D(0.1, 0, 0, 0, 0.455, 0, 0, 0, 0.455, -0.0906708, -1.24039, -0.621017)
@@ -108,7 +127,7 @@ mesh = SubResource("ArrayMesh_5f0ga")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_pa7pg")
 
-[node name="crank2" parent="." instance=ExtResource("4_87rgg")]
+[node name="crank2" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.806102, -0.854425, 0.0268512)
 
 [node name="crank" parent="crank2" index="0"]
@@ -123,13 +142,13 @@ mesh = SubResource("ArrayMesh_ylnh6")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_pa7pg")
 
-[node name="instrument" parent="." instance=ExtResource("5_pth3f")]
+[node name="instrument" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0191739, 0.0876551, 0.040444)
 
 [node name="WindIndstrument" parent="instrument" index="0"]
 surface_material_override/0 = ExtResource("2_pa7pg")
 
-[node name="Button2" parent="." instance=ExtResource("1_m782a")]
+[node name="Button2" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.322193, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
